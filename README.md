@@ -1,1 +1,1 @@
-# Mastermind.rb
+# mastermind.rb
