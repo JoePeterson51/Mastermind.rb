@@ -1,12 +1,14 @@
 class Deck
 
-  attr_reader :winning_combo, :game_pieces
+  attr_accessor :winning_combo, :game_pieces
   def initialize(game_pieces)
      @game_pieces = game_pieces
+     @winning_combo = ''
   end
 
-  def winning_combo
+  def create_winning_combo
     @game_pieces = ['red', 'blue', 'yellow', 'green']
-    array = Array.new(4).map {|element| p @game_pieces[rand(4)]}
+    @winning_combo = Array.new(4).map {|element| p @game_pieces[rand(4)][0]}.join("")
   end
+  
 end
