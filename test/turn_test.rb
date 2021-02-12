@@ -26,9 +26,9 @@ class PlayerTest < Minitest::Test
   end
   
   def test_timer
-    @turn.start_timer
+    @turn.stopwatch
 
-    assert_instance_of Time, @turn.timer
+    assert_instance_of Time, @turn.timer[0]
 
     #maybe checks to see if timer ends if game is won
   end

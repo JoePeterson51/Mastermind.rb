@@ -8,13 +8,18 @@ class Turn
     @player1 = players[0]
     @player2 = players[1]
     @deck = deck
-    @timer = ''
+    @timer = []
     @guess_num = 0
     @guesser = player1
   end
 
-  def start_timer
-    @timer = Time.new
+  def stopwatch
+    @timer << Time.new
+    if @timer.length == 2
+      p (100) % 60
+      p 100 / 60
+      (@timer[1].to_i - @timer[0].to_i) 
+    end
   end
 
   def took_guess
