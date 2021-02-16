@@ -2,7 +2,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/game_piece'
 require './lib/deck'
-require 'pry'
+
 class DeckTest < Minitest::Test
 
   def setup
@@ -27,9 +27,9 @@ class DeckTest < Minitest::Test
 
   def test_it_has_pieces
 
+    require 'pry'; binding.pry
     assert_equal [@game_piece1, @game_piece2, @game_piece3, @game_piece4], @deck.game_pieces
   end
-
   def test_winning_combo_is_valid
     valid_colors = ['r', 'b', 'g', 'y']
     @deck.create_winning_combo
