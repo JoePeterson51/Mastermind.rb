@@ -3,6 +3,7 @@ require './lib/deck'
 class Turn
 
   attr_reader :deck,
+              :player,
               :player1,
               :player2,
               :timer,
@@ -12,8 +13,9 @@ class Turn
               :guesser
 
   def initialize(players, deck)
-    @player1 = players[0]
-    @player2 = players[1]
+    @player = player
+    # @player1 = players[0]
+    # @player2 = players[1]
     @deck = deck
     @timer = ''
     @stop_timer = ''
