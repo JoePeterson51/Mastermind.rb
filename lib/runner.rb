@@ -12,7 +12,8 @@ end
 @game_piece2 = GamePiece.new('blue')
 @game_piece3 = GamePiece.new('green')
 @game_piece4 = GamePiece.new('yellow')
-@player1 = Player.new('player')
+@player = Player.new('player')
 @game_pieces = [@game_piece1, @game_piece2, @game_piece3, @game_piece4]
 @deck = Deck.new(@game_pieces)
 @turn = Turn.new(@player1, @deck)
+new_game.start 
