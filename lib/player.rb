@@ -7,7 +7,7 @@ class Player
 
   def player_guess
     @players_guess_var = gets.chomp
-  end 
+  end
 
 
   def valid_guess?
