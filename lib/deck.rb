@@ -8,8 +8,8 @@ class Deck
   end
 
   def create_winning_combo
-    @game_pieces = @game_pieces.map {|piece| piece.color}
-    @winning_combo = Array.new(@game_pieces.length).map {|element| @game_pieces[rand(@game_pieces.length)][0]}.join("")
+    pieces = @game_pieces.map {|piece| piece.color}
+    @winning_combo = Array.new(pieces.length).map {|element| pieces[rand(pieces.length)][0]}.join("")
     return
   end
 end
