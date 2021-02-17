@@ -26,9 +26,9 @@ class PlayerTest < Minitest::Test
   end
 
   def test_timer
-    @turn.start_timer
+    @turn.stopwatch
 
-    assert_instance_of Time, @turn.timer
+    assert_instance_of Time, @turn.timer[0]
 
     #maybe checks to see if timer ends if game is won
   end
@@ -58,9 +58,16 @@ class PlayerTest < Minitest::Test
     assert_equal response, @turn.check_guess
 
     @turn.player1.players_guess_var = 'yggy'
+
+    #require 'pry'; binding.pry
+    response = "Congratulations! You guessed the sequence \'#{@deck.winning_combo}\' in 8 guesses over 4 minutes,
+    22 seconds. Do you want to (p)lay again or (q)uit?"
+    
+
     # require 'pry'; binding.pry
     response = %{Congratulations! You guessed the sequence #{@deck.winning_combo} in 8 guesses over 4 minutes,\n 22 seconds.
      \n  Do you want to (p)lay again or (q)uit?}
+
 
     assert_equal response, @turn.check_guess
   end
