@@ -18,13 +18,6 @@ class Player
     p valid_guess?(@players_guess_var)
   end 
 
-
-  def player_guess
-    @players_guess_var = gets.chomp
-  end
-
-
-
   def valid_guess?(guess)
     colors = ['r', 'g', 'b', 'y']
     is_an_available_guess = guess.split("").map {|element| colors.include?(element) ? 1 : 0}

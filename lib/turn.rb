@@ -3,7 +3,7 @@ require 'highline/import'
 class Turn
 
 
-  attr_reader :deck, :player1, :player2, :timer, :guess_num, :guesser, :winning_color_distribution, :player_guess_distribution
+  attr_reader :deck, :player1, :player2, :timer, :guess_num, :guesser, :winning_color_distribution, :player_guess_distribution, :game_pieces
 
   attr_reader :deck,
               :player,
@@ -18,11 +18,10 @@ class Turn
 
   def initialize(players, deck)
     @player = player
-    # @player1 = players[0]
-    # @player2 = players[1]
+    @player1 = players[0]
+    @player2 = players[1]
     @deck = deck
     @timer = []
-    @timer = ''
     @stop_timer = ''
     @guess_num = 0
     @guesser = player1
@@ -79,17 +78,6 @@ class Turn
       stopwatch
       return p "Congratulations! #{@guesser.name} guessed the sequence \'#{@deck.winning_combo}\' in #{@guess_num} guesses over #{@minutes} minutes,
     #{@seconds} seconds. Do you want to (p)lay again or (q)uit?"
-
-      |element, index|
-      if element == deck.winning_combo[index]
-        spots_correct.push(true)
-      end
-    }
-    if spots_correct.length == deck.game_pieces.length
-      @stop_timer
-      p %{Congratulations! You guessed the sequence '#{@deck.winning_combo}' in 8 guesses over 4 minutes,\n  22 seconds.
-        \n Do you want to (p)lay again or (q)uit?}
-
     else
       if @player2 == nil
         p "'#{@guesser.players_guess_var}' has #{colors_correct.to_s} of the correct elements with #{spots_correct.length.to_s} in the correct positions. You\'ve taken #{@guess_num} guess"
