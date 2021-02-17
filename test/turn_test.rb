@@ -57,11 +57,9 @@ class PlayerTest < Minitest::Test
     assert_equal response, @turn.check_guess
 
     @turn.player1.players_guess_var = 'yggy'
-    require 'pry'; binding.pry
+    #require 'pry'; binding.pry
     response = "Congratulations! You guessed the sequence \'#{@deck.winning_combo}\' in 8 guesses over 4 minutes,
-    22 seconds.
-    
-    Do you want to (p)lay again or (q)uit?"
+    22 seconds. Do you want to (p)lay again or (q)uit?"
     
     assert_equal response, @turn.check_guess
   end
