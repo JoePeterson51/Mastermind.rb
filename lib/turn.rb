@@ -25,6 +25,7 @@ class Turn
     @stop_timer = ''
     @guess_num = 0
     @guesser = player1
+
   end
 
   def stopwatch

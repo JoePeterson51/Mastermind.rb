@@ -1,6 +1,6 @@
 class Deck
 
-  attr_accessor :winning_combo, :game_pieces, :create_winning_combo
+  attr_accessor :winning_combo, :game_pieces
   def initialize(game_pieces)
      @game_pieces = game_pieces.to_a
      @winning_combo = ''

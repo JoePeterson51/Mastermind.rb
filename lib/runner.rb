@@ -1,7 +1,3 @@
-require './lib/deck'
-require './lib/game_piece'
-require './lib/player'
-require './lib/turn'
 require 'highline/import'
 
 
@@ -132,6 +128,7 @@ end
 mastermind = Mastermind_Runner.new
 require 'pry'; binding.pry
 mastermind.start_game
+
 
 
 
