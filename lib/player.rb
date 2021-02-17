@@ -4,6 +4,7 @@ class Player
   def initialize(name)
     @name = name
   end
+
   def conceal_guess(mask='*')
     @players_guess_var = ask('') { |q| q.echo = mask}
   end
@@ -16,6 +17,12 @@ class Player
     end
     p valid_guess?(@players_guess_var)
   end 
+
+
+  def player_guess
+    @players_guess_var = gets.chomp
+  end
+
 
 
   def valid_guess?(guess)

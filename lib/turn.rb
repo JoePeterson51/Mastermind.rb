@@ -2,13 +2,28 @@ require 'highline/import'
 
 class Turn
 
+
   attr_reader :deck, :player1, :player2, :timer, :guess_num, :guesser, :winning_color_distribution, :player_guess_distribution
 
+  attr_reader :deck,
+              :player,
+              :player1,
+              :player2,
+              :timer,
+              :stop_timer,
+              :finish_time,
+              :guess_num,
+              :guesser
+
+
   def initialize(players, deck)
-    @player1 = players[0]
-    @player2 = players[1]
+    @player = player
+    # @player1 = players[0]
+    # @player2 = players[1]
     @deck = deck
     @timer = []
+    @timer = ''
+    @stop_timer = ''
     @guess_num = 0
     @guesser = player1
   end
@@ -34,7 +49,7 @@ class Turn
     check_guess
   end
 
-  def check_guess 
+  def check_guess
     took_guess
     #hash winning color distribution to see how many colors right
     @winning_color_distribution = Hash.new(0)
@@ -54,6 +69,7 @@ class Turn
       end
     @player_guess_distribution.map {|e| e}
     @guesser.players_guess_var.split('').each_with_index {
+
       |element, index| 
       if element == @deck.winning_combo[index]
         spots_correct.push(true)
@@ -63,6 +79,17 @@ class Turn
       stopwatch
       return p "Congratulations! #{@guesser.name} guessed the sequence \'#{@deck.winning_combo}\' in #{@guess_num} guesses over #{@minutes} minutes,
     #{@seconds} seconds. Do you want to (p)lay again or (q)uit?"
+
+      |element, index|
+      if element == deck.winning_combo[index]
+        spots_correct.push(true)
+      end
+    }
+    if spots_correct.length == deck.game_pieces.length
+      @stop_timer
+      p %{Congratulations! You guessed the sequence '#{@deck.winning_combo}' in 8 guesses over 4 minutes,\n  22 seconds.
+        \n Do you want to (p)lay again or (q)uit?}
+
     else
       if @player2 == nil
         p "'#{@guesser.players_guess_var}' has #{colors_correct.to_s} of the correct elements with #{spots_correct.length.to_s} in the correct positions. You\'ve taken #{@guess_num} guess"
@@ -80,4 +107,10 @@ class Turn
       @guesser = player1
     end
   end
-end 
+
+  def end_timer
+    @stop_timer = Time.new
+    @stop_timer - @timer = @finish_time
+  end
+
+end
